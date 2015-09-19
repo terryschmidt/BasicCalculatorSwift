@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var calculatorDisplay: UILabel!
     
     @IBAction func numPressed(sender: UIButton) {
-        var number = sender.currentTitle
+        let number = sender.currentTitle
         
         if userIsTypingNumber {
             calculatorDisplay.text = calculatorDisplay.text! + number!
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     @IBAction func operatorPressed(sender: AnyObject) {
         userIsTypingNumber = false
-        firstNum = calculatorDisplay.text!.toInt()!
+        firstNum = Int(calculatorDisplay.text!)!
         operatorToUse = sender.currentTitle!!
     }
     
@@ -38,14 +38,14 @@ class ViewController: UIViewController {
         userIsTypingNumber = false
         var result = 0
         
-        secondNum = calculatorDisplay.text!.toInt()!
+        secondNum = Int(calculatorDisplay.text!)!
         
         switch operatorToUse {
             case "+": result = firstNum + secondNum
             case "-": result = firstNum - secondNum
             case "*": result = firstNum * secondNum
             case "/": result = firstNum / secondNum
-            case "":  result = calculatorDisplay.text!.toInt()!
+            case "":  result = Int(calculatorDisplay.text!)!
             default: break
         }
         
